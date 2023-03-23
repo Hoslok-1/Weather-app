@@ -9,7 +9,9 @@ const humidityField = document.getElementById('humidity');
 const uvField = document.getElementById('uv');
 const windSpeedField = document.getElementById('wind_speed');
 const locationInfoField = document.getElementById('location-info');
+const gifInfo = document.getElementById('gif-info');
 const gifImg = document.querySelector('img');
+
 
 let APIdataJSON:any; //holds the weather data
 let APIdataJSON2:any; // holds the gif data
@@ -28,7 +30,7 @@ async function getAPI(location:string)
     let apiGif = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=O24GqLvTGeS7X6KDPpAAxbiGD1q8JfQN&s=${gifSearchTerm}`)
     APIdataJSON2 = await apiGif.json()
     fillFields(APIdataJSON);
-    fillGif(APIdataJSON2) 
+    fillGif(APIdataJSON2);
 }
 
 function fillFields(data:any)
@@ -71,11 +73,24 @@ function changeTemp()
 function fillGif(gifData:any)
 {
     gifImg!.src = gifData.data.images.original.url
+    let reloadGifBtn = document.createElement('button');
+    reloadGifBtn.textContent = "Reload"
+    gifInfo?.appendChild(reloadGifBtn);
+
+    reloadGifBtn.addEventListener('click',changeGif)
+}
+
+async function changeGif()
+{
+    let gifSearchTerm = APIdataJSON.current.condition['text'];
+    let apiData = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=O24GqLvTGeS7X6KDPpAAxbiGD1q8JfQN&s=${gifSearchTerm}`);
+    let JSONdata  = await apiData.json();
+    gifImg!.src = JSONdata.data.images.original.url;
 }
 
 
-submitBtn?.addEventListener('click',startProcess)
-fahrenheitCheckbox?.addEventListener('change',changeTemp)
+submitBtn?.addEventListener('click',startProcess);
+fahrenheitCheckbox?.addEventListener('change',changeTemp);
 
 
 
