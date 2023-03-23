@@ -1,9 +1,17 @@
+img
+{
+    border-radius: 4px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+
 #container
 {
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
-    gap: 130px;
+    margin-top: 8%;
+    gap: 100px;
 }
 
 #input-container
@@ -15,16 +23,16 @@
 }
 
 #other-info
+{
+    display: flex;
+    gap:50px;
+}
+
+#metrics
 { 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin-left: 20%;
-    row-gap: 150%;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "header ."
-    "middle middle"
-    "footer footer";
 }
 
 #temperature
@@ -45,43 +53,12 @@
     width:60%
 }
 
-#location-info
-{
-    grid-area: "header";
-}
-
-#feels_like
-{
-    grid-area: "middle";
-}
-
-#humidity
-{
-    grid-area: "middle";
-}
-
-#uv
-{
-    grid-area: "footer";
-}
-
-#wind_speed
-{
-    grid-area: "footer";
-}
-
-#fahrenheit
-{
-    font-size: larger;
-    margin-top: 10%;
-}
-
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 55px;
+    height: 25px;
 }
   
 .switch input {
@@ -106,8 +83,8 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 17px;
+    width: 21px;
     left: 4px;
     bottom: 4px;
     background-color: white;
