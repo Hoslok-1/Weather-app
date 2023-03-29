@@ -24,13 +24,18 @@ function startProcess()
 
 async function getAPI(location:string)
 {
-    let apiWeatherData = await fetch(`https://api.weatherapi.com/v1/current.json?key=f21b6dec13a145ae94a61506231903&q=${location}`)
-    APIdataJSON = await apiWeatherData.json()
-    let gifSearchTerm = APIdataJSON.current.condition['text'] + ' weather'
-    let apiGif = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=O24GqLvTGeS7X6KDPpAAxbiGD1q8JfQN&s=${gifSearchTerm}`)
-    APIdataJSON2 = await apiGif.json()
-    fillFields(APIdataJSON);
-    fillGif(APIdataJSON2);
+    try{
+        let apiWeatherData = await fetch(`https://api.weatherapi.com/v1/current.json?key=f21b6dec13a145ae94a61506231903&q=${location}`)
+        APIdataJSON = await apiWeatherData.json()
+        fillFields(APIdataJSON);
+        let gifSearchTerm = APIdataJSON.current.condition['text'] + ' weather'
+        let apiGif = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=O24GqLvTGeS7X6KDPpAAxbiGD1q8JfQN&s=${gifSearchTerm}`)
+        APIdataJSON2 = await apiGif.json()
+        fillGif(APIdataJSON2);
+    }
+    catch(err){
+        temperatureField!.textContent = "Location not found";
+    }
 }
 
 function fillFields(data:any)
@@ -74,7 +79,8 @@ function fillGif(gifData:any)
 {
     gifImg!.src = gifData.data.images.original.url
     let reloadGifBtn = document.createElement('button');
-    reloadGifBtn.textContent = "Reload"
+    reloadGifBtn.textContent = "↻"
+    reloadGifBtn.className = "reload-gif";
     gifInfo?.appendChild(reloadGifBtn);
 
     reloadGifBtn.addEventListener('click',changeGif)

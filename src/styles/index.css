@@ -31,8 +31,13 @@ img
 #metrics
 { 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     margin-left: 20%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "header ."
+    "main main"
+    "footer footer"
 }
 
 #temperature
@@ -53,6 +58,45 @@ img
     width:60%
 }
 
+#gif-info
+{
+    display: flex;
+}
+
+#location-info
+{
+    grid-area: header;
+
+}
+
+#feels_like
+{
+    grid-area: main;
+    margin-left: 60%;
+}
+
+#humidity
+{
+    grid-area: main;
+}
+
+#uv
+{
+    grid-area: footer;
+}
+
+#wind_speed
+{
+    grid-area:footer;
+    margin-left: 60%;
+}
+
+
+.reload-gif
+{
+    height:30px;
+    width:30px;
+}
 
 .switch {
     position: relative;
