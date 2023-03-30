@@ -15,6 +15,8 @@ const gifImg = document.querySelector('img');
 
 let APIdataJSON:any; //holds the weather data
 let APIdataJSON2:any; // holds the gif data
+
+
 function startProcess()
 {
     console.log("Process started");
@@ -51,7 +53,7 @@ function fillFields(data:any)
         temperatureField!.textContent = data.current.temp_c+"°C";
         feelsLikeField!.textContent = "Feels Like: "+ data.current.feelslike_c+"°C";
     }
-    locationInfoField!.textContent = data.location.region+","+data.location.country
+    locationInfoField!.textContent = data.location.name+","+data.location.region+","+data.location.country
     humidityField!.textContent = "Humidity: "+ data.current.humidity;
     uvField!.textContent = "UV: "+ data.current.uv;
     windSpeedField!.textContent = "Wind Speed: "+ data.current.wind_kph+" kph";
@@ -97,6 +99,8 @@ async function changeGif()
 
 submitBtn?.addEventListener('click',startProcess);
 fahrenheitCheckbox?.addEventListener('change',changeTemp);
+
+
 
 
 

@@ -1,13 +1,16 @@
 img
 {
     border-radius: 4px;
-    max-width: 500px;
-    max-height: 500px;
 }
 
 body{
     background-color: #5CDB95;
-    color:whitesmoke
+    color:#edf5e1
+}
+
+#fahrenheit
+{
+    font-size: larger;
 }
 
 #container
@@ -37,7 +40,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 20%;
-    column-gap:30%;
+    column-gap:40%;
     grid-template-rows: auto;
     width: 50%;
     grid-template-areas: 
@@ -48,7 +51,7 @@ body{
 
 #temperature
 {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 #location
@@ -67,12 +70,21 @@ body{
 #gif-info
 {
     display: flex;
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 20%;
+}
+
+.underline
+{
+    text-decoration: underline;
+    text-decoration-color:black ;
 }
 
 #location-info
 {
     grid-area: header;
-    font-size: x-large;
+    font-size:xx-large;
 
 }
 
@@ -80,21 +92,28 @@ body{
 {
     grid-area: main;
     margin-left: 60%;
+    font-size: large;
+
 }
 
 #humidity
 {
     grid-area: main;
+    font-size: large;
 }
+
 
 #uv
 {
     grid-area: footer;
+    font-size: large;
+
 }
 
 #wind_speed
 {
     grid-area:footer;
+    font-size: large;
     margin-left: 60%;
 }
 
@@ -163,4 +182,41 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
+}
+
+
+.button-74{
+    background-color: #05386b;
+    border: 2px solid #edf5e1;
+    border-radius: 30px;
+    box-shadow: #edf5e1 4px 4px 0 0;
+    color: #edf5e1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.button-74:hover {
+  background-color: #5CDB95;
+}
+
+.button-74:active {
+  box-shadow: #5CDB95 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
