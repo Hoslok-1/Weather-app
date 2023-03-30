@@ -17,6 +17,11 @@ let APIdataJSON:any; //holds the weather data
 let APIdataJSON2:any; // holds the gif data
 
 
+function initialFill()
+{
+    getAPI("bangalore")
+}
+
 function startProcess()
 {
     console.log("Process started");
@@ -96,6 +101,8 @@ async function changeGif()
     gifImg!.src = JSONdata.data.images.original.url;
 }
 
+
+initialFill();
 
 submitBtn?.addEventListener('click',startProcess);
 fahrenheitCheckbox?.addEventListener('change',changeTemp);
