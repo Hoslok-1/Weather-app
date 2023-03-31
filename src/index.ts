@@ -27,9 +27,10 @@ function initialFill()
 function startProcess()
 {
     console.log("Process started");
-    resetFields();
     let location:string = (locationField as HTMLInputElement).value;
+    resetFields();
     getAPI(location);
+
 }
 
 async function getAPI(location:string)
@@ -117,6 +118,7 @@ function resetFields()
     windSpeedField!.textContent = "";
     gifImg!.src = ""
     reloadGifBtn.remove();
+    (locationField as HTMLInputElement).value = "";
 }
 
 
