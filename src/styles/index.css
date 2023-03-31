@@ -62,6 +62,11 @@ body{
     box-sizing: border-box;
 }
 
+#location-header
+{
+    font-size: 230%;
+}
+
 #input-form
 {
     width:60%
@@ -70,9 +75,9 @@ body{
 #gif-info
 {
     display: flex;
-    max-width: 300px;
-    max-height: 300px;
-    margin-right: 20%;
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 25%;
 }
 
 .underline
@@ -84,8 +89,9 @@ body{
 #location-info
 {
     grid-area: header;
-    font-size:xx-large;
-
+    font-size:x-large;
+    font-weight: bold;
+    width: max-content;
 }
 
 #feels_like
@@ -115,6 +121,16 @@ body{
     grid-area:footer;
     font-size: large;
     margin-left: 60%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #379683;
+    color: white;
+    text-align: center;
 }
 
 
@@ -220,3 +236,31 @@ input:checked + .slider:before {
     padding: 0 25px;
   }
 }
+
+.button-75{
+    background-color: #05386b;
+    border: 2px solid #edf5e1;
+    border-radius: 5px;
+    box-shadow: #edf5e1 4px 4px 0 0;
+    color: #edf5e1;
+    cursor: pointer;
+    height: 30px;
+    display: inline-block;
+    font-weight: 600;
+    padding:2px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.button-75:hover {
+  background-color: #5CDB95;
+}
+
+.button-75:active {
+  box-shadow: #5CDB95 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+

@@ -2,6 +2,7 @@ import  "./styles/index.css"
 
 const submitBtn = document.getElementById('submit-btn');
 const locationField = document.getElementById('location');
+const locationHeader = document.getElementById('location-header');
 const fahrenheitCheckbox = <HTMLInputElement>document.getElementById('fahrenheit-check');
 const temperatureField = document.getElementById('temperature');
 const feelsLikeField = document.getElementById('feels_like');
@@ -10,6 +11,7 @@ const uvField = document.getElementById('uv');
 const windSpeedField = document.getElementById('wind_speed');
 const locationInfoField = document.getElementById('location-info');
 const gifInfo = document.getElementById('gif-info');
+let reloadGifBtn = document.createElement('button');
 const gifImg = document.querySelector('img');
 
 
@@ -25,6 +27,7 @@ function initialFill()
 function startProcess()
 {
     console.log("Process started");
+    resetFields();
     let location:string = (locationField as HTMLInputElement).value;
     getAPI(location);
 }
@@ -58,9 +61,10 @@ function fillFields(data:any)
         temperatureField!.textContent = data.current.temp_c+"°C";
         feelsLikeField!.textContent = "Feels Like: "+ data.current.feelslike_c+"°C";
     }
-    locationInfoField!.textContent = data.location.name+","+data.location.region+","+data.location.country
+    locationInfoField!.textContent = data.location.region+","+data.location.country
     humidityField!.textContent = "Humidity: "+ data.current.humidity;
     uvField!.textContent = "UV: "+ data.current.uv;
+    locationHeader!.textContent = data.location.name;
     windSpeedField!.textContent = "Wind Speed: "+ data.current.wind_kph+" kph";
 }
 
@@ -85,9 +89,9 @@ function changeTemp()
 function fillGif(gifData:any)
 {
     gifImg!.src = gifData.data.images.original.url
-    let reloadGifBtn = document.createElement('button');
     reloadGifBtn.textContent = "↻"
     reloadGifBtn.className = "reload-gif";
+    reloadGifBtn.className = "button-75";
     gifInfo?.appendChild(reloadGifBtn);
 
     reloadGifBtn.addEventListener('click',changeGif)
@@ -101,12 +105,25 @@ async function changeGif()
     gifImg!.src = JSONdata.data.images.original.url;
 }
 
+function resetFields()
+{
+
+    temperatureField!.textContent = "";
+    feelsLikeField!.textContent = "";
+    locationInfoField!.textContent = "";
+    humidityField!.textContent = "";
+    uvField!.textContent = "";
+    locationHeader!.textContent = "";
+    windSpeedField!.textContent = "";
+    gifImg!.src = ""
+    reloadGifBtn.remove();
+}
+
 
 initialFill();
 
 submitBtn?.addEventListener('click',startProcess);
 fahrenheitCheckbox?.addEventListener('change',changeTemp);
-
 
 
 
